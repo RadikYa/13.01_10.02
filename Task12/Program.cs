@@ -22,3 +22,25 @@ int Multiple(int number1, int number2)
     if(number1 % number2 == 0) return 0;
     return number1 % number2;
 }
+
+
+// int MultipleNum(int num1, int num2)
+// {
+//     return num1 % num2;
+// }
+
+// Console.WriteLine("Введите два числа :");
+
+// int numberFirst = Convert.ToInt32(Console.ReadLine());
+// int numberSecond = Convert.ToInt32(Console.ReadLine());
+
+// int remains = MultipleNum(numberFirst, numberSecond);
+
+// if (remains == 0)
+// {
+//     Console.WriteLine("Кратно");
+// }
+// else
+// {
+//     Console.WriteLine($"Не кратно, {remains} ");
+// }

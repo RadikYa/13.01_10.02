@@ -9,17 +9,24 @@
 
 int numberSecond(int number)
 {
-    return (number / 10) % 10;
+    if (number < 999 || number > 100) return (number / 10) % 10;
+    return number;
 }
 
 Console.Write("Введите трёхзначное число: ");
 int number = Convert.ToInt32(Console.ReadLine());
 
-if (number)
-{
-    
-}
-
 int result = numberSecond(number);
 
-Console.Write($"Вторая цифра: {result}");
+if (number > 999)
+{
+    Console.Write($"Число {number} больше трёхначного");
+}
+else if (number < 100)
+{
+    Console.Write($"Число {number} меньше трёхначного");
+}
+else
+{
+    Console.Write($"Вторая цифра: {result}");
+}

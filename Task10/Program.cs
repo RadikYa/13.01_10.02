@@ -6,3 +6,15 @@
 // 456 -> 5
 // 782 -> 8
 // 918 -> 1
+
+int numberSecond(int number)
+{
+    return (number / 10) % 10;
+}
+
+Console.Write("Введите трёхзначное число: ");
+int number = Convert.ToInt32(Console.ReadLine());
+
+int result = numberSecond(number);
+
+Console.Write($"Вторая цифра: {result}");

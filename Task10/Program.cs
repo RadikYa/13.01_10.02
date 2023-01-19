@@ -15,6 +15,11 @@ int numberSecond(int number)
 Console.Write("Введите трёхзначное число: ");
 int number = Convert.ToInt32(Console.ReadLine());
 
+if (number)
+{
+    
+}
+
 int result = numberSecond(number);
 
 Console.Write($"Вторая цифра: {result}");

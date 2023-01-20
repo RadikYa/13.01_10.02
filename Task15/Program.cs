@@ -7,15 +7,29 @@
 // 1 -> нет
 
 
-int weekEnd(int number)
+bool weekEnd(int number)
 {
-        if (number == 6 || number == 7) return number % 10;
-        else if (number < 100) return number;
-        number = number / 10;
-    }
-    return number % 10;
+    return number > 5 && number < 8;
 }
 
 Console.Write("Введите число от 1 до 7: ");
 int number = Convert.ToInt32(Console.ReadLine());
+
+if (number > 7)
+{
+    Console.WriteLine($"Цифра {number} является больше семи");
+}
+else if (number < 1)
+{
+    Console.WriteLine($"Цифра {number} является меньше одного");
+}
+else
+{
+    bool result = weekEnd(number);
+
+    if (result) Console.WriteLine("да");
+    else Console.WriteLine("нет");
+}
+
+
 

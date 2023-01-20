@@ -14,7 +14,7 @@ int numberThird(int number)
     while (number > 999)
     {
         if (number < 1000 && number > 99) return number % 10;
-        else if (number < 100) return number;
+        // else if (number < 100) return number;
         number = number / 10;
     }
     return number % 10;

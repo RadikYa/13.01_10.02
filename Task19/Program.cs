@@ -14,7 +14,7 @@
 bool palindrome(int number)
 {
     int numberFirst = number / 10000;
-    int numberSecond = number / 1000;
+    int numberSecond = (number / 1000) % 10;
     int numberFourth = (number / 10) % 10;
     int numberFifth = number % 10;
     return numberFirst == numberFifth && numberSecond == numberFourth;
@@ -38,7 +38,6 @@ else
 
     if (result) Console.WriteLine("да");
     else Console.WriteLine("нет");
-
 }
 
 

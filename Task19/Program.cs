@@ -73,7 +73,6 @@ long number = Convert.ToInt64(Console.ReadLine());
 
 long result = palindrome(number);
 
-Console.WriteLine($"Результат: {result}");
 
 if (result == number)
 {

@@ -46,19 +46,34 @@ long palindrome(long number)
 {
     long numberInverted = 0;
     long numberNow = number;
-    while (numberNow > 0)
+    if (number < 0)
     {
-        long invertedNow = numberNow % 10;
-        numberInverted = numberInverted * 10 + invertedNow;
-        numberNow = numberNow / 10;
+        while (numberNow < 0)
+        {
+            long invertedNow = numberNow % 10;
+            numberInverted = numberInverted * 10 + invertedNow;
+            numberNow = numberNow / 10;
+        }
+        return (numberInverted);
     }
-    return (numberInverted);
+    else
+    {
+        while (numberNow > 0)
+        {
+            long invertedNow = numberNow % 10;
+            numberInverted = numberInverted * 10 + invertedNow;
+            numberNow = numberNow / 10;
+        }
+        return (numberInverted);
+    }
 }
 
 Console.Write("Введите любое число: ");
 long number = Convert.ToInt64(Console.ReadLine());
 
 long result = palindrome(number);
+
+Console.WriteLine($"Результат: {result}");
 
 if (result == number)
 {

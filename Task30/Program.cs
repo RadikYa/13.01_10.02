@@ -9,14 +9,40 @@
 // int[] array1 = new int [8]{1,2,3,4,5,6,7,8};
 // int[] array2 = new int {1,2,3};
 
+// Первый вариант: 
 
-int[] array = new int[8];
+// int[] array = new int[8];
 
-for (int i = 0; i < array.Length; i++)
+// for (int i = 0; i < array.Length; i++)
+// {
+//     array[i] = new Random().Next(0, 2);
+// }
+// for (int i = 0; i < array.Length; i++)
+// {
+//     Console.Write($" {array[i]}");
+// }
+
+
+// Второй вариант:
+
+int[] GenerateArray(int size,int min, int max)
 {
-    array[i] = new Random().Next(0, 2);
+    int[] arr = new int[size];
+    Random rnd = new Random(); 
+    for (int i = 0; i < arr.Length; i++)
+    {
+        arr[i] = rnd.Next(min, max + 1);
+    }
+    return arr;
 }
-for (int i = 0; i < array.Length; i++)
+
+void PrintArray(int[] arr)
 {
-    Console.Write($" {array[i]}");
+    for (int i = 0; i < arr.Length; i++)
+    {
+        Console.Write($"{arr[i]} " );
+    }
 }
+
+int [] array = GenerateArray(8, 0, 1);
+PrintArray(array);

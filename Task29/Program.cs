@@ -23,13 +23,23 @@ void PrintArray(int[] arr)
         Console.Write($"{arr[i]}, ");
     }
     Console.Write($"{arr[7]} -> ");
+    
+    // 1-ый вариант: 
 
-    Console.Write("[");
-    for (int i = 0; i < arr.Length - 1; i++)
-    {
-        Console.Write($"{arr[i]}, ");
-    }
-    Console.Write($"{arr[7]}]");
+    // Console.Write($"[{arr[0]}, {arr[1]}, {arr[2]}, {arr[3]}, {arr[4]}, {arr[5]}, {arr[6]}, {arr[7]}]");
+
+   // 2-ой вариант: 
+
+    Console.WriteLine("[{0}]", string.Join(", ", arr));
+
+   // 3-ий вариант: 
+   
+    // Console.Write("[");
+    // for (int i = 0; i < arr.Length - 1; i++)
+    // {
+    //     Console.Write($"{arr[i]}, ");
+    // }
+    // Console.Write($"{arr[7]}]");
 }
 
 int[] array = GenerateArray(8, 0, 99);

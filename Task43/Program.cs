@@ -20,14 +20,23 @@ Console.Write("k2: ");
 int k2 = Convert.ToInt32(Console.ReadLine());
 
 
+double distanceX = DistanceX(k1,k2);
+double distanceY = DistanceY(b1,b2);
+double distanceRoundX = Math.Round(distanceX, 2, MidpointRounding.ToZero);
+double distanceRoundY = Math.Round(distanceY, 2, MidpointRounding.ToZero);
+
+Console.WriteLine($"({distanceRoundX}; {distanceRoundY})");
 
 
-double distance = Distance(x1, y1, x2, y2, z1, z2);
-double distanceRound = Math.Round(distance, 2, MidpointRounding.ToZero);
-Console.WriteLine($"Расстояние между точками {distanceRound}");
-
-
-double Distance(int xc1, int yc1, int xc2, int yc2, int xc3, int yc3)
+double DistanceX(double x, double y)
 {
-    return Math.Sqrt(Math.Pow((xc2 - xc1), 2) + Math.Pow((yc2 - yc1), 2) + Math.Pow((xc3 - yc3), 2));
+    x = Convert.ToDouble(b2 - b1) / (k1 - k2);
+    return y = k1 * x + b1;
+}
+
+double DistanceY(double y, double x)
+{
+    // return y = k1 * ((b2 - b1) / (k1 - k2)) + b1;
+    x = Convert.ToDouble(b2 - b1) / (k1 - k2);
+    return y = k2 * x + b2;
 }

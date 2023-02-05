@@ -12,7 +12,7 @@ int[] ArrDiget(int size)
     int[] arr = new int[size];
     for (int i = 0; i < arr.Length; i++)
     {
-        Console.Write($"Введите ваши числа №{i} = : ");
+        Console.Write($"Введите ваше число №{i} = : ");
         arr[i] = Convert.ToInt32(Console.ReadLine());
     }
     return arr;
@@ -23,7 +23,7 @@ int SearchDiget(int[] arr)
     int count = default;
     for (int i = 0; i < arr.Length; i++)
     {
-        if (i > 0)
+        if (arr[i] > 0)
         {
             count++;
         }
@@ -37,19 +37,20 @@ string PrintArray(int[] arr)
     {
         array = array + ($", {arr[i]}");
     }
+    array += " -> ";
     return array;
 }
-
 
 Console.Write("Введите какое количество число вы хотите ввести: ");
 int size = Convert.ToInt32(Console.ReadLine());
 
 int[] arrDiget = ArrDiget(size);
 
-Console.Write($"Вашо число {arrDiget}");
-PrintArray(int[]);
+Console.Write($"Ваши числа {PrintArray(arrDiget)}");
+
+
 int searchDiget = SearchDiget(arrDiget);
 
-Console.WriteLine($"Вашо число {searchDiget}");
+Console.WriteLine($"Всего больше нуля {searchDiget} цифр");
 
 

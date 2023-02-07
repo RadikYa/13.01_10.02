@@ -4,11 +4,72 @@
 // пользователя.
 
 
-int[,] CreateMatrixRndInt(int rows, int columns, int min, int max)
+// int[,] CreateMatrixRndInt(int rows, int columns, int min, int max)
+// {
+//     int[,] matrix = new int[rows, columns];
+//     Random rnd = new Random();
+
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//         {
+//             matrix[i, j] = rnd.Next(min, max + 1);
+//         }
+//     }
+
+//     return matrix;
+// }
+
+// int[,] Replace (int[,] matrix)
+// {
+//     int[,] tmpArray = new int[matrix.GetLength(0), matrix.GetLength(1)];    
+
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//     {        
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//         {
+//             int tmp = matrix[i, j];
+//             tmpArray[j, i] = matrix[i, j];
+//             matrix[i, j] = tmp;
+//         }        
+//     }
+//     return tmpArray;
+// }
+
+
+// void PrintMatrix(int[,] matrix)
+// {
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//     {
+//         //Console.Write("|");
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//         {
+//             if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j],1}  ");
+//             else Console.Write($"{matrix[i, j],1} ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+
+
+// int[,] matrix = CreateMatrixRndInt(4, 4, 1, 10);
+// PrintMatrix(matrix);
+// Console.WriteLine();
+// if (matrix.GetLength(0) == matrix.GetLength(1))
+// {
+//     int[,] newMatrix = Replace (matrix);
+//     PrintMatrix(newMatrix);
+// } 
+// else Console.WriteLine("Число строк и столбцов не совпадает!");
+
+
+
+
+int[,] GenerateMatrix(int rows, int columns, int min, int max)
 {
     int[,] matrix = new int[rows, columns];
     Random rnd = new Random();
-
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
@@ -16,49 +77,63 @@ int[,] CreateMatrixRndInt(int rows, int columns, int min, int max)
             matrix[i, j] = rnd.Next(min, max + 1);
         }
     }
-
     return matrix;
 }
 
-int[,] Replace (int[,] matrix)
+string PrintMatrix(int[,] matrix)
 {
-    int[,] tmpArray = new int[matrix.GetLength(0), matrix.GetLength(1)];    
-
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {        
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            int tmp = matrix[i, j];
-            tmpArray[j, i] = matrix[i, j];
-            matrix[i, j] = tmp;
-        }        
-    }
-    return tmpArray;
-}
-
-
-void PrintMatrix(int[,] matrix)
-{
+    string str = string.Empty;
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        //Console.Write("|");
+        str += "[";
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j],1}  ");
-            else Console.Write($"{matrix[i, j],1} ");
+            if (j == matrix.GetLength(1) - 1) str += $" {matrix[i, j],3} ";
+            else str += $" {matrix[i, j],3}, ";
         }
-        Console.WriteLine();
+        str += "]\n";
+    }
+    return str;
+
+}
+
+// int[,] ChangeRowsOnColumns(int[,] matrix)
+// {
+//     int[,] temporaryMatrix = new int[matrix.GetLength(0), matrix.GetLength(1)];
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//         {
+//             temporaryMatrix[j, i] = matrix[i, j];
+//         }
+//     }
+//     return temporaryMatrix;
+// }
+
+void ChangeRowsOnColumns(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0) - 1; i++)
+    {
+        for (int j = i + 1; j < matrix.GetLength(1); j++)
+        {
+            int temporary = matrix[i, j];
+            matrix[i, j] = matrix[j, i];
+            matrix[j, i] = temporary;
+        }
     }
 }
 
+int[,] matrixNumbers = GenerateMatrix(4, 4, -10, 10);
+Console.WriteLine($"До перемены строк и колонок - \n{PrintMatrix(matrixNumbers)}");
 
-
-int[,] matrix = CreateMatrixRndInt(4, 4, 1, 10);
-PrintMatrix(matrix);
-Console.WriteLine();
-if (matrix.GetLength(0) == matrix.GetLength(1))
+if (matrixNumbers.GetLength(0) != matrixNumbers.GetLength(1))
 {
-    int[,] newMatrix = Replace (matrix);
-    PrintMatrix(newMatrix);
-} 
-else Console.WriteLine("Число строк и столбцов не совпадает!");
+    Console.WriteLine($"Замена невозможна");
+}
+else
+{
+    // int[,] matrixChange = ChangeRowsOnColumns(matrixNumbers);
+    // Console.WriteLine($"После перемены строк и колонок - \n{PrintMatrix(matrixChange)}");
+    ChangeRowsOnColumns(matrixNumbers);
+    Console.WriteLine($"После перемены строк и колонок - \n{PrintMatrix(matrixNumbers)}");
+}

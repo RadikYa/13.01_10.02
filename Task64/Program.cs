@@ -8,7 +8,11 @@
 
 void NaturalNumbers(int num)
 {
-    if (num == 0) return;
+    if (num == 0) 
+    {
+        Console.Write('"');
+        return;
+    }
     if (num > 1) Console.Write($"{num}, ");
     else Console.Write($"{num}");
     NaturalNumbers(num - 1);
@@ -21,6 +25,7 @@ int number = Convert.ToInt32(Console.ReadLine());
 if (number > 0)
 {
     Console.Write($"N = {number} -> ");
+    Console.Write('"');
     NaturalNumbers(number);
 }
 else
